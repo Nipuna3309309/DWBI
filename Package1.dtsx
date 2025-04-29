@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="165"
-  DTS:VersionGUID="{17F5A748-FAAD-4F51-8E84-819F4E956C41}">
+  DTS:VersionBuild="169"
+  DTS:VersionGUID="{E6DF109F-31B3-497E-AF8F-40FE57098E83}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -161,7 +161,7 @@ where [refTable].[AlternateUserID] = ?</property>
                 <output
                   refId="Package\Transform and load into Dim_payment\Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="IgnoreFailure"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Transform and load into Dim_payment\Lookup.Inputs[Lookup Input]">
@@ -3213,11 +3213,20 @@ where [refTable].[AlternateDepartmentID] = ?</property>
                       externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
                       lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[FullName]" />
                     <inputColumn
-                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[Age]"
-                      cachedDataType="i4"
-                      cachedName="Age"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
-                      lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[Age]" />
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[DateOfBirth]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateOfBirth"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateOfBirth]"
+                      lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[DateOfBirth]" />
                     <inputColumn
                       refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[Country]"
                       cachedCodepage="1252"
@@ -3241,6 +3250,18 @@ where [refTable].[AlternateDepartmentID] = ?</property>
                       externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[JoinYear]"
                       lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[JoinYear]" />
                     <inputColumn
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      lineageId="Package\Transform and load to Dim_user\Derived Column 2.Outputs[Derived Column Output].Columns[StartDate]" />
+                    <inputColumn
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedDataType="i4"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[Age]" />
+                    <inputColumn
                       refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[InsertDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="InsertDate"
@@ -3252,20 +3273,6 @@ where [refTable].[AlternateDepartmentID] = ?</property>
                       cachedName="ModifiedDate"
                       externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
                       lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]" />
-                    <inputColumn
-                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[StartDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="StartDate"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
-                      lineageId="Package\Transform and load to Dim_user\Derived Column 2.Outputs[Derived Column Output].Columns[StartDate]" />
-                    <inputColumn
-                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].Columns[Email]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Email"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
-                      lineageId="Package\Transform and load to Dim_user\Union All.Outputs[Union All Output 1].Columns[Email]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3284,9 +3291,16 @@ where [refTable].[AlternateDepartmentID] = ?</property>
                       length="100"
                       name="FullName" />
                     <externalMetadataColumn
-                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
-                      dataType="i4"
-                      name="Age" />
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateOfBirth]"
+                      dataType="wstr"
+                      length="10"
+                      name="DateOfBirth" />
                     <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       codePage="1252"
@@ -3304,14 +3318,6 @@ where [refTable].[AlternateDepartmentID] = ?</property>
                       dataType="i4"
                       name="JoinYear" />
                     <externalMetadataColumn
-                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
-                      dataType="dbTimeStamp"
-                      name="InsertDate" />
-                    <externalMetadataColumn
-                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
-                      dataType="dbTimeStamp"
-                      name="ModifiedDate" />
-                    <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
                       dataType="dbTimeStamp"
                       name="StartDate" />
@@ -3320,11 +3326,17 @@ where [refTable].[AlternateDepartmentID] = ?</property>
                       dataType="dbTimeStamp"
                       name="EndDate" />
                     <externalMetadataColumn
-                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="email" />
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      dataType="i4"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                      dataType="dbTimeStamp"
+                      name="InsertDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and load to Dim_user\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3641,7 +3653,7 @@ where [refTable].[AlternateUserID] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_User] SET [Age] = ?,[Country] = ?,[email] = ?,[FullName] = ?,[InsertDate] = ?,[JoinYear] = ?,[ModifiedDate] = ?,[SubscriptionStatus] = ? WHERE [AlternateUserID] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_User] SET [Age] = ?,[Country] = ?,[DateOfBirth] = ?,[Email] = ?,[FullName] = ?,[InsertDate] = ?,[JoinYear] = ?,[ModifiedDate] = ?,[SubscriptionStatus] = ? WHERE [AlternateUserID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3673,7 +3685,7 @@ where [refTable].[AlternateUserID] = ?</property>
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[UserID]"
                       cachedDataType="i4"
                       cachedName="UserID"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       lineageId="Package\Transform and load to Dim_user\OLE DB Source.Outputs[OLE DB Source Output].Columns[UserID]" />
                     <inputColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Country]"
@@ -3684,12 +3696,19 @@ where [refTable].[AlternateUserID] = ?</property>
                       externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Transform and load to Dim_user\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]" />
                     <inputColumn
+                      refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[DateOfBirth]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateOfBirth"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Transform and load to Dim_user\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateOfBirth]" />
+                    <inputColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Email"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\Transform and load to Dim_user\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]" />
                     <inputColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[FullName]"
@@ -3697,25 +3716,25 @@ where [refTable].[AlternateUserID] = ?</property>
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="FullName"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\Transform and load to Dim_user\Derived Column.Outputs[Derived Column Output].Columns[FullName]" />
                     <inputColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[InsertDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="InsertDate"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\Transform and load to Dim_user\Derived Column.Outputs[Derived Column Output].Columns[InsertDate]" />
                     <inputColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[JoinYear]"
                       cachedDataType="i4"
                       cachedName="JoinYear"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\Transform and load to Dim_user\Derived Column.Outputs[Derived Column Output].Columns[JoinYear]" />
                     <inputColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ModifiedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="ModifiedDate"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                       lineageId="Package\Transform and load to Dim_user\Derived Column.Outputs[Derived Column Output].Columns[ModifiedDate]" />
                     <inputColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[SubscriptionStatus]"
@@ -3723,7 +3742,7 @@ where [refTable].[AlternateUserID] = ?</property>
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="SubscriptionStatus"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                       lineageId="Package\Transform and load to Dim_user\OLE DB Source.Outputs[OLE DB Source Output].Columns[SubscriptionStatus]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -3754,9 +3773,8 @@ where [refTable].[AlternateUserID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
+                      dataType="wstr"
+                      length="10"
                       name="Param_2">
                       <properties>
                         <property
@@ -3780,7 +3798,9 @@ where [refTable].[AlternateUserID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      dataType="dbTimeStamp"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
                       name="Param_4">
                       <properties>
                         <property
@@ -3791,19 +3811,8 @@ where [refTable].[AlternateUserID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      dataType="i4"
-                      name="Param_5">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       dataType="dbTimeStamp"
-                      name="Param_6">
+                      name="Param_5">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -3812,10 +3821,19 @@ where [refTable].[AlternateUserID] = ?</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
+                      refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
+                      dataType="dbTimeStamp"
                       name="Param_7">
                       <properties>
                         <property
@@ -3826,8 +3844,21 @@ where [refTable].[AlternateUserID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      dataType="i4"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
                       name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and load to Dim_user\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      dataType="i4"
+                      name="Param_9">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -4304,7 +4335,7 @@ where [refTable].[AlternateUserID] = ?</property>
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Age], [AlternateUserID], [Country], [email], [FullName], [JoinYear], [SubscriptionStatus],[StartDate],[EndDate] FROM [dbo].[Dim_User]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Age], [AlternateUserID], [Country], [DateOfBirth], [Email], [FullName], [JoinYear], [SubscriptionStatus],[StartDate],[EndDate] FROM [dbo].[Dim_User]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -4394,12 +4425,26 @@ where [refTable].[AlternateUserID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
+                      refId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DateOfBirth]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateOfBirth"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateOfBirth]"
+                      lineageId="Package\Transform and load to Dim_user\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateOfBirth]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Email"
-                      externalMetadataColumnId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[email]"
+                      externalMetadataColumnId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Email]"
                       lineageId="Package\Transform and load to Dim_user\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]">
                       <properties>
                         <property
@@ -4469,11 +4514,16 @@ where [refTable].[AlternateUserID] = ?</property>
                       length="255"
                       name="Country" />
                     <externalMetadataColumn
-                      refId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[email]"
+                      refId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateOfBirth]"
+                      dataType="wstr"
+                      length="10"
+                      name="DateOfBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Email]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="email" />
+                      name="Email" />
                     <externalMetadataColumn
                       refId="Package\Transform and load to Dim_user\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[FullName]"
                       codePage="1252"
@@ -6217,6 +6267,80 @@ where [refTable].[AlternateUserID] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform and load into Dim_payment">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Transform and load into Dim_payment\OLE DB Source"
+          TopLeft="493.333318630855,148.333328912656" />
+        <NodeLayout
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\Transform and load into Dim_payment\Lookup"
+          TopLeft="720.757554277327,146.212116854661" />
+        <EdgeLayout
+          Id="Package\Transform and load into Dim_payment.Paths[OLE DB Source Output]"
+          TopLeft="643.999985297521,168.606056216991">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.7575689798053,0"
+              Start="0,0"
+              End="69.2575689798053,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69.2575689798053,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and load into Dim_payment\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and load into Dim_payment\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_User]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Transform and load to Dim_user\Slowly Changing Dimension">
     <Properties>
@@ -6247,8 +6371,14 @@ where [refTable].[AlternateUserID] = ?</property>
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[DateOfBirth]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;DateOfBirth&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;email&lt;/ColumnName&gt;
+      &lt;ColumnName&gt;Email&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
@@ -6304,92 +6434,6 @@ where [refTable].[AlternateUserID] = ?</property>
   &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Transform and load into Dim_payment">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150.666666666667,42.6666666666667"
-          Id="Package\Transform and load into Dim_payment\OLE DB Source"
-          TopLeft="493.333318630855,148.333328912656" />
-        <NodeLayout
-          Size="113.333333333334,42.6666666666667"
-          Id="Package\Transform and load into Dim_payment\Lookup"
-          TopLeft="451.666653205951,391.666654994091" />
-        <EdgeLayout
-          Id="Package\Transform and load into Dim_payment.Paths[OLE DB Source Output]"
-          TopLeft="568.666651964188,190.999995579322">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-60.33333209157,200.666659414768"
-              Start="0,0"
-              End="-60.33333209157,193.166659414768">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,96.3333297073842" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,96.3333297073842"
-                    Point2="0,100.333329707384"
-                    Point3="-4,100.333329707384" />
-                  <mssgle:LineSegment
-                    End="-56.33333209157,100.333329707384" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-56.33333209157,100.333329707384"
-                    Point2="-60.33333209157,100.333329707384"
-                    Point3="-60.33333209157,104.333329707384" />
-                  <mssgle:LineSegment
-                    End="-60.33333209157,193.166659414768" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and load into Dim_payment\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and load into Dim_payment\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_User]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
