@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DWBI_project_Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="153"
-  DTS:VersionGUID="{64ADB868-C485-43EF-9599-A7030E739BB8}">
+  DTS:VersionBuild="161"
+  DTS:VersionGUID="{EC565D0C-4B83-460E-BF61-62C6D7A93E3A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3814,6 +3814,108 @@
           version="1">
           <components>
             <component
+              refId="Package\Extract Users data to staging\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract Users data to staging\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Users data to staging\Data Conversion.Inputs[Data Conversion Input].Columns[DateOfBirth]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateOfBirth"
+                      lineageId="Package\Extract Users data to staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateOfBirth]" />
+                    <inputColumn
+                      refId="Package\Extract Users data to staging\Data Conversion.Inputs[Data Conversion Input].Columns[JoinDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="JoinDate"
+                      lineageId="Package\Extract Users data to staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[JoinDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Extract Users data to staging\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DateOfBirth]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DateOfBirth]"
+                      name="Copy of DateOfBirth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract Users data to staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateOfBirth]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of JoinDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of JoinDate]"
+                      name="Copy of JoinDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract Users data to staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[JoinDate]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Extract Users data to staging\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Extract Users data to staging\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -3984,13 +4086,11 @@
                       name="SubscriptionStatus" />
                     <externalMetadataColumn
                       refId="Package\Extract Users data to staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[JoinDate]"
-                      dataType="wstr"
-                      length="10"
+                      dataType="dbTimeStamp"
                       name="JoinDate" />
                     <externalMetadataColumn
                       refId="Package\Extract Users data to staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateOfBirth]"
-                      dataType="wstr"
-                      length="10"
+                      dataType="dbTimeStamp"
                       name="DateOfBirth" />
                   </externalMetadataColumns>
                 </input>
@@ -4291,8 +4391,13 @@
           </components>
           <paths>
             <path
-              refId="Package\Extract Users data to staging.Paths[OLE DB Source Output]"
+              refId="Package\Extract Users data to staging.Paths[Data Conversion Output]"
               endId="Package\Extract Users data to staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Extract Users data to staging\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Extract Users data to staging.Paths[OLE DB Source Output]"
+              endId="Package\Extract Users data to staging\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Extract Users data to staging\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -5096,7 +5201,7 @@
     design-time-name="Package\Extract Payments data to staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150.666666666667,42.6666666666667"
           Id="Package\Extract Payments data to staging\OLE DB Source"
@@ -5104,39 +5209,41 @@
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Extract Payments data to staging\OLE DB Destination"
-          TopLeft="742.499982528389,244.549993792772" />
+          TopLeft="1054.99996855855,304.999990910292" />
         <EdgeLayout
           Id="Package\Extract Payments data to staging.Paths[OLE DB Source Output]"
-          TopLeft="758.333312978347,141.666663716237">
+          TopLeft="758.333312978348,141.666663716237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="70.1666695500411,102.883330076536"
+              EndConnector="382.666655580203,163.333327194055"
               Start="0,0"
-              End="70.1666695500411,95.3833300765356">
+              End="382.666655580203,155.833327194055">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.4416650382678" />
+                    End="0,77.6666635970275" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,47.4416650382678"
-                    Point2="0,51.4416650382678"
-                    Point3="4,51.4416650382678" />
+                    Point1="0,77.6666635970275"
+                    Point2="0,81.6666635970275"
+                    Point3="4,81.6666635970275" />
                   <mssgle:LineSegment
-                    End="66.1666695500411,51.4416650382678" />
+                    End="378.666655580203,81.6666635970275" />
                   <mssgle:CubicBezierSegment
-                    Point1="66.1666695500411,51.4416650382678"
-                    Point2="70.1666695500411,51.4416650382678"
-                    Point3="70.1666695500411,55.4416650382678" />
+                    Point1="378.666655580203,81.6666635970275"
+                    Point2="382.666655580203,81.6666635970275"
+                    Point3="382.666655580203,85.6666635970275" />
                   <mssgle:LineSegment
-                    End="70.1666695500411,95.3833300765356" />
+                    End="382.666655580203,155.833327194055" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5454,7 +5561,7 @@
     design-time-name="Package\Extract Users data to staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Extract Users data to staging\OLE DB Destination"
@@ -5462,33 +5569,71 @@
         <NodeLayout
           Size="150.666666666667,42.6666666666667"
           Id="Package\Extract Users data to staging\OLE DB Source"
-          TopLeft="367.70831689549,161.41665896972" />
+          TopLeft="399.583315470567,113.316661263307" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Extract Users data to staging\Data Conversion"
+          TopLeft="707.499968372286,157.299992499352" />
         <EdgeLayout
           Id="Package\Extract Users data to staging.Paths[OLE DB Source Output]"
-          TopLeft="443.041650228823,204.083325636387">
+          TopLeft="550.249982137233,134.64999459664">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="59.2083311633531,74.3333277543386"
+              EndConnector="157.249986235053,43.9833312360451"
               Start="0,0"
-              End="59.2083311633531,66.8333277543386">
+              End="149.749986235053,43.9833312360451">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.1666638771693" />
+                    End="74.6249931175266,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.1666638771693"
-                    Point2="0,37.1666638771693"
-                    Point3="4,37.1666638771693" />
+                    Point1="74.6249931175266,0"
+                    Point2="78.6249931175266,0"
+                    Point3="78.6249931175266,4" />
                   <mssgle:LineSegment
-                    End="55.2083311633531,37.1666638771693" />
+                    End="78.6249931175266,39.9833312360451" />
                   <mssgle:CubicBezierSegment
-                    Point1="55.2083311633531,37.1666638771693"
-                    Point2="59.2083311633531,37.1666638771693"
-                    Point3="59.2083311633531,41.1666638771693" />
+                    Point1="78.6249931175266,39.9833312360451"
+                    Point2="78.6249931175266,43.9833312360451"
+                    Point3="82.6249931175266,43.9833312360451" />
                   <mssgle:LineSegment
-                    End="59.2083311633531,66.8333277543386" />
+                    End="149.749986235053,43.9833312360451" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Users data to staging.Paths[Data Conversion Output]"
+          TopLeft="786.166635038953,199.966659166018">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-283.916653646777,78.4499942247066"
+              Start="0,0"
+              End="-283.916653646777,70.9499942247066">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.2249971123533" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.2249971123533"
+                    Point2="0,39.2249971123533"
+                    Point3="-4,39.2249971123533" />
+                  <mssgle:LineSegment
+                    End="-279.916653646777,39.2249971123533" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-279.916653646777,39.2249971123533"
+                    Point2="-283.916653646777,39.2249971123533"
+                    Point3="-283.916653646777,43.2249971123533" />
+                  <mssgle:LineSegment
+                    End="-283.916653646777,70.9499942247066" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
