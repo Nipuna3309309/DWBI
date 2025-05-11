@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="update_reviews"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{64D7F100-EB14-4566-BAD4-41904BCD3744}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{50D980BB-C997-434F-8150-70E183EE059C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,18 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=DARKETERNAL\MSSQLSERVER02;Initial Catalog=DataWarehouse_Project;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package3-{42CFA1CA-21A5-4F81-8237-06D8B699BE3B}DARKETERNAL\MSSQLSERVER02.DataWarehouse_Project;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DARKETERNAL\MSSQLSERVER02.StagingDB_project]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{68018619-7639-4AAE-B881-DC2431E50D13}"
+      DTS:ObjectName="DARKETERNAL\MSSQLSERVER02.StagingDB_project">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DARKETERNAL\MSSQLSERVER02;Initial Catalog=StagingDB_project;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-update_reviews-{68018619-7639-4AAE-B881-DC2431E50D13}DARKETERNAL\MSSQLSERVER02.StagingDB_project;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -182,7 +194,7 @@ where [refTable].[ReviewID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="UserKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CourseKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TicketID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IssueType" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TicketDescription" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TicketStatus" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TicketCreatedDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TicketResolvedDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReviewID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Rating" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReviewComment" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ReviewDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InsertDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="accm_txn_create_time" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="accm_txn_complete_time" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="txn_process_time_hours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ReviewDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PaymentSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UserKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CourseKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TicketID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IssueType" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TicketDescription" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TicketStatus" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TicketCreatedDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TicketResolvedDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReviewID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Rating" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="progressid" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProgressPercentage" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;referenceColumn name="InsertDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="accm_txn_create_time" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="accm_txn_complete_time" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="txn_process_time_hours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -306,10 +318,10 @@ where [refTable].[ReviewID] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Fact_UserPerformance
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DataWarehouse_Project].[dbo].[Fact_UserPerformance]
 SET accm_txn_complete_time = ?,
-    txn_process_time_hours = DATEDIFF(HOUR, accm_txn_create_time, ?)
-WHERE ReviewID= ?;</property>
+    txn_process_time_hours = ?
+WHERE ReviewID= ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -471,8 +483,8 @@ WHERE ReviewID= ?;</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DARKETERNAL\MSSQLSERVER02.DataWarehouse_Project]"
-                  connectionManagerRefId="Package.ConnectionManagers[DARKETERNAL\MSSQLSERVER02.DataWarehouse_Project]"
+                  connectionManagerID="Package.ConnectionManagers[DARKETERNAL\MSSQLSERVER02.StagingDB_project]"
+                  connectionManagerRefId="Package.ConnectionManagers[DARKETERNAL\MSSQLSERVER02.StagingDB_project]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -581,7 +593,7 @@ WHERE ReviewID= ?;</property>
         <NodeLayout
           Size="152,42.6666666666667"
           Id="Package\Data Flow Task"
-          TopLeft="239.374989299104,126.749993956089" />
+          TopLeft="238.749989327044,126.749993956089" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -608,13 +620,13 @@ WHERE ReviewID= ?;</property>
           TopLeft="193.7499913387,61.0999970865251" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="269.083324672034,103.766663753192">
+          TopLeft="269.083324672033,103.766663753192">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="75.0833291423818,62.6333283122382"
+              EndConnector="75.0833291423824,62.6333283122382"
               Start="0,0"
-              End="75.0833291423818,55.1333283122382">
+              End="75.0833291423824,55.1333283122382">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -625,13 +637,13 @@ WHERE ReviewID= ?;</property>
                     Point2="0,31.3166641561191"
                     Point3="4,31.3166641561191" />
                   <mssgle:LineSegment
-                    End="71.0833291423818,31.3166641561191" />
+                    End="71.0833291423824,31.3166641561191" />
                   <mssgle:CubicBezierSegment
-                    Point1="71.0833291423818,31.3166641561191"
-                    Point2="75.0833291423818,31.3166641561191"
-                    Point3="75.0833291423818,35.3166641561191" />
+                    Point1="71.0833291423824,31.3166641561191"
+                    Point2="75.0833291423824,31.3166641561191"
+                    Point3="75.0833291423824,35.3166641561191" />
                   <mssgle:LineSegment
-                    End="75.0833291423818,55.1333283122382" />
+                    End="75.0833291423824,55.1333283122382" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -719,7 +731,7 @@ WHERE ReviewID= ?;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -729,7 +741,7 @@ WHERE ReviewID= ?;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
